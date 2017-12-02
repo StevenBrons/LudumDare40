@@ -10,25 +10,33 @@ public class Screen extends Canvas {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public static final int ZOOM = 3;
-	int tileWidth = 8 * ZOOM;
+	public static final int ZOOM = 4;
+	int tileWidth = Tile.SIZE;
 
 	public Screen() {
-
+		addKeyListener(Main.level.player.input);
 	}
 
 	public void drawAll(Level l) {
+		double px = l.player.x;
+		double py = l.player.y;
+
 		BufferStrategy bs = getBufferStrategy();
 		if (bs == null) {
-			createBufferStrategy(4);
+			createBufferStrategy(3);
 			return;
 		}
 		Graphics2D g = (Graphics2D) bs.getDrawGraphics();
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, getWidth(), getHeight());
-		// g.translate(-getWidth() / 2, -getHeight() / 2);
+		g.translate(getWidth() / 2, getHeight() / 2);
+		g.scale(ZOOM, ZOOM);
+
+		g.translate(-px, -py);
 
 		drawTiles(g, l);
+		g.setColor(Color.RED);
+		g.fillRect((int) px, (int) py, tileWidth, tileWidth);
 
 		bs.show();
 	}

@@ -28,6 +28,22 @@ public class Main {
 		});
 		t.start();
 
+		Thread run = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				while (true) {
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					level.update();
+				}
+			}
+		});
+		run.start();
+
 	}
 
 }

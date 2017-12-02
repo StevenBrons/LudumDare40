@@ -1,5 +1,11 @@
+import java.io.Serializable;
 
-public class Level {
+public class Level implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5357890466755108200L;
 
 	int width = 100;
 	int height = 100;
@@ -7,18 +13,21 @@ public class Level {
 	Tile[][] tiles = new Tile[width][height];
 	Tile defaultTile = new Tile();
 
-	Player player;
+	Player player = new Player();
 
 	public Level() {
-		player = new Player();
+		player.x = 25 * Tile.SIZE;
+		player.y = 25 * Tile.SIZE;
 
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
-				if (Math.random() > 0.5) {
-					tiles[x][y] = new Wall();
-				} else {
-					tiles[x][y] = new Floor();
-				}
+				tiles[x][y] = new Wall();
+			}
+		}
+
+		for (int x = 20; x < 40; x++) {
+			for (int y = 20; y < 40; y++) {
+				tiles[x][y] = new Floor();
 			}
 		}
 
@@ -32,6 +41,15 @@ public class Level {
 			return defaultTile;
 		}
 
+	}
+
+	public void generate() {
+
+	}
+
+	public void update() {
+		player.move();
+		player.update();
 	}
 
 }

@@ -15,9 +15,9 @@ public class Frame extends JFrame {
 	public Frame() {
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setExtendedState(MAXIMIZED_BOTH);
 		setTitle("Lundum Dare #40");
 		setSize(new Dimension(640, 400));
+		setExtendedState(MAXIMIZED_BOTH);
 
 		setLayout(new BorderLayout());
 		add(screen, BorderLayout.CENTER);
