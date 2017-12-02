@@ -1,6 +1,7 @@
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferStrategy;
 
 public class Screen extends Canvas {
@@ -11,7 +12,6 @@ public class Screen extends Canvas {
 	private static final long serialVersionUID = 1L;
 
 	public static final int ZOOM = 4;
-	int tileWidth = Tile.SIZE;
 
 	public Screen() {
 		addKeyListener(Main.level.player.input);
@@ -36,19 +36,19 @@ public class Screen extends Canvas {
 
 		drawTiles(g, l);
 		g.setColor(Color.RED);
-		g.fillRect((int) px, (int) py, tileWidth, tileWidth);
+		g.fillRect((int) px - l.player.hb, (int) py - l.player.hb, l.player.hb * 2, l.player.hb * 2);
 
 		bs.show();
 	}
 
 	public void drawTiles(Graphics2D g, Level l) {
-		int w = (getWidth() / tileWidth) + 1;
-		int h = (getHeight() / tileWidth) + 1;
+		int w = (getWidth() / Tile.SIZE) + 1;
+		int h = (getHeight() / Tile.SIZE) + 1;
 
 		for (int x = 0; x < w; x += 1) {
 			for (int y = 0; y < h; y += 1) {
-				Tile t = l.getTileAt(x, y);
-				g.drawImage(t.getTexture(), x * tileWidth, y * tileWidth, tileWidth, tileWidth, null);
+				Tile t = l.getTileAt(x * Tile.SIZE, y * Tile.SIZE);
+				g.drawImage(t.getTexture(), x * Tile.SIZE, y * Tile.SIZE, Tile.SIZE, Tile.SIZE, null);
 
 			}
 		}

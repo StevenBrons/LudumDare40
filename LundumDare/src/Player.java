@@ -2,9 +2,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.Serializable;
 
-public class Player extends Entity implements Serializable{
+public class Player extends Entity implements Serializable {
 
-	
 	/**
 	 * 
 	 */

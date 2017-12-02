@@ -11,7 +11,7 @@ public class Level implements Serializable {
 	int height = 100;
 
 	Tile[][] tiles = new Tile[width][height];
-	Tile defaultTile = new Tile();
+	Tile defaultTile = new Tile(-1, -1);
 
 	Player player = new Player();
 
@@ -21,13 +21,13 @@ public class Level implements Serializable {
 
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
-				tiles[x][y] = new Wall();
+				tiles[x][y] = new Wall(x, y);
 			}
 		}
 
 		for (int x = 20; x < 40; x++) {
 			for (int y = 20; y < 40; y++) {
-				tiles[x][y] = new Floor();
+				tiles[x][y] = new Floor(x, y);
 			}
 		}
 
@@ -35,8 +35,11 @@ public class Level implements Serializable {
 
 	Tile getTileAt(double d, double e) {
 
-		if (d >= 0 && e >= 0 && d < width && e < height) {
-			return tiles[(int) d][(int) e];
+		double x = d / (double) Tile.SIZE;
+		double y = e / (double) Tile.SIZE;
+
+		if (x >= 0 && y >= 0 && x < width && y < height) {
+			return tiles[(int) x][(int) y];
 		} else {
 			return defaultTile;
 		}
@@ -49,7 +52,7 @@ public class Level implements Serializable {
 
 	public void update() {
 		player.move();
-		player.update();
+		player.update(this);
 	}
 
 }
