@@ -1,6 +1,8 @@
 
 public class Main {
 
+	static Level level = new Level();
+
 	public static void main(String args[]) {
 
 		Frame f = new Frame();
@@ -11,7 +13,7 @@ public class Main {
 			public void run() {
 				while (true) {
 					long milis = System.currentTimeMillis();
-					f.screen.drawAll();
+					f.screen.drawAll(level);
 					try {
 						int t = (int) (100 - (System.currentTimeMillis() - milis));
 						if (t < 0) {
