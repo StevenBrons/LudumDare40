@@ -14,6 +14,8 @@ public class Player extends Entity implements Serializable {
 
 	int acc = 2;
 	int hb = 4;
+	int health = 3;
+	int energy = 20;
 
 	boolean UP = false;
 	boolean DOWN = false;
@@ -25,7 +27,7 @@ public class Player extends Entity implements Serializable {
 	boolean SOUTH = false;
 	boolean WEST = false;
 
-	public KeyListener input = new KeyListener() {
+	public static KeyListener input = new KeyListener() {
 
 		@Override
 		public void keyTyped(KeyEvent e) {
@@ -36,32 +38,32 @@ public class Player extends Entity implements Serializable {
 			switch (e.getKeyCode()) {
 			case KeyEvent.VK_W:
 			case KeyEvent.VK_UP:
-				UP = false;
+				Level.player.UP = false;
 				break;
 			case KeyEvent.VK_S:
 			case KeyEvent.VK_DOWN:
-				DOWN = false;
+				Level.player.DOWN = false;
 				break;
 			case KeyEvent.VK_A:
 			case KeyEvent.VK_LEFT:
-				LEFT = false;
+				Level.player.LEFT = false;
 				break;
 			case KeyEvent.VK_D:
 			case KeyEvent.VK_RIGHT:
-				RIGHT = false;
+				Level.player.RIGHT = false;
 				break;
-			case KeyEvent.VK_I:
-				NORTH = false;
-				break;
-			case KeyEvent.VK_L:
-				EAST = false;
-				break;
-			case KeyEvent.VK_K:
-				SOUTH = false;
-				break;
-			case KeyEvent.VK_J:
-				WEST = false;
-				break;
+			// case KeyEvent.VK_I:
+			// Level.player.NORTH = false;
+			// break;
+			// case KeyEvent.VK_L:
+			// Level.player.EAST = false;
+			// break;
+			// case KeyEvent.VK_K:
+			// Level.player.SOUTH = false;
+			// break;
+			// case KeyEvent.VK_J:
+			// Level.player.WEST = false;
+			// break;
 			}
 		}
 
@@ -70,31 +72,31 @@ public class Player extends Entity implements Serializable {
 			switch (e.getKeyCode()) {
 			case KeyEvent.VK_W:
 			case KeyEvent.VK_UP:
-				UP = true;
+				Level.player.UP = true;
 				break;
 			case KeyEvent.VK_S:
 			case KeyEvent.VK_DOWN:
-				DOWN = true;
+				Level.player.DOWN = true;
 				break;
 			case KeyEvent.VK_A:
 			case KeyEvent.VK_LEFT:
-				LEFT = true;
+				Level.player.LEFT = true;
 				break;
 			case KeyEvent.VK_D:
 			case KeyEvent.VK_RIGHT:
-				RIGHT = true;
+				Level.player.RIGHT = true;
 				break;
 			case KeyEvent.VK_I:
-				NORTH = true;
+				Level.player.NORTH = true;
 				break;
 			case KeyEvent.VK_L:
-				EAST = true;
+				Level.player.EAST = true;
 				break;
 			case KeyEvent.VK_K:
-				SOUTH = true;
+				Level.player.SOUTH = true;
 				break;
 			case KeyEvent.VK_J:
-				WEST = true;
+				Level.player.WEST = true;
 				break;
 			}
 		}
@@ -113,7 +115,8 @@ public class Player extends Entity implements Serializable {
 		if (RIGHT) {
 			this.velx += acc;
 		}
-		if ((NORTH || EAST || SOUTH || WEST) && l.time % 2 == 0) {
+		if ((NORTH || EAST || SOUTH || WEST) && energy > 0) {
+			energy--;
 			Bullet b = null;
 			if (NORTH) {
 				b = new PlayerBullet(this.x, this.y, 0);
@@ -143,12 +146,34 @@ public class Player extends Entity implements Serializable {
 
 			l.entities.add(b);
 
+			NORTH = false;
+			EAST = false;
+			SOUTH = false;
+			WEST = false;
+
 		}
 
 	}
 
 	public BufferedImage getTexture() {
 		return texture;
+	}
+
+	public void hit() {
+		health--;
+		if (health == 0) {
+			health = 3;
+			energy = 10;
+			Main.level.next();
+		}
+	}
+
+	public void health() {
+		health++;
+	}
+
+	public void energy() {
+		energy++;
 	}
 
 }

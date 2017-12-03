@@ -1,5 +1,6 @@
 import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferStrategy;
@@ -18,8 +19,8 @@ public class Screen extends Canvas {
 	}
 
 	public void drawAll(Level l) {
-		double px = l.player.x;
-		double py = l.player.y;
+		double px = Math.floor(l.player.x);
+		double py = Math.floor(l.player.y);
 
 		BufferStrategy bs = getBufferStrategy();
 		if (bs == null) {
@@ -37,9 +38,25 @@ public class Screen extends Canvas {
 		drawEntities(g, l);
 		drawTiles(g, l);
 
+		g.setTransform(new AffineTransform());
+
+		drawUI(g, l);
+
 		// drawMaze(g, l);
 
 		bs.show();
+	}
+
+	private void drawUI(Graphics2D g, Level l) {
+		double i = getWidth() / 80.0;
+		g.drawImage(Health.texture, (int) i, (int) i, (int) (i * 3), (int) (i * 3), null);
+		g.setFont(new Font(null, Font.ITALIC, (int) (i * 3)));
+		g.setColor(Color.WHITE);
+		g.drawString("x" + l.player.health, (int) i * 6, (int) (i * 3.5));
+		g.drawImage(Energy.texture, (int) (getWidth() - i - (12 * i)), (int) (i * 0.8), (int) (4 * i), (int) (4 * i),
+				null);
+		g.drawString("x" + l.player.energy, (int) (getWidth() - i - (6 * i)), (int) (i * 3.5));
+
 	}
 
 	public void drawEntities(Graphics2D g, Level l) {
@@ -86,7 +103,10 @@ public class Screen extends Canvas {
 		for (int x = -20; x < w; x += 1) {
 			for (int y = -20; y < h; y += 1) {
 				Tile t = l.getTileAt(x * Tile.SIZE, y * Tile.SIZE);
-				g.drawImage(t.getTexture(), x * Tile.SIZE, y * Tile.SIZE, Tile.SIZE, Tile.SIZE, null);
+				if (t.isSolid()) {
+					g.setColor(Color.getHSBColor((float) ((l.color % 10000) / 10000.0), 1f, 1f));
+					g.fillRect(x * Tile.SIZE, y * Tile.SIZE, Tile.SIZE, Tile.SIZE);
+				}
 			}
 		}
 

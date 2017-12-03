@@ -48,8 +48,19 @@ public class PlayerBullet extends Bullet {
 	}
 
 	public void run(Level l) {
+
+		for (int i = l.entities.size() - 1; i >= 0; i--) {
+			Entity e = l.entities.get(i);
+			if (e instanceof Enemy) {
+				double dist = Math.pow(e.x - this.x, 2) + Math.pow(e.y - this.y, 2);
+				if (dist < getHitbox() * Tile.SIZE * 3) {
+					e.death(l);
+				}
+			}
+		}
+
 		if (Math.abs(this.velx) + Math.abs(this.vely) < 1) {
-			this.death = true;
+			death(l);
 		}
 	}
 

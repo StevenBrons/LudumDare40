@@ -36,7 +36,8 @@ public class Generator {
 		}
 
 		int set = 0;
-		int enemies = 100;
+		int enemies = (int) Math.ceil((double) Level.player.health * 3.0 + ((double) Level.player.energy / 3.0));
+		System.out.println(enemies);
 		while (set < enemies) {
 			int x = rnd.nextInt(width * rs);
 			int y = rnd.nextInt(height * rs);
@@ -44,6 +45,18 @@ public class Generator {
 			if (!l.tiles[x][y].isSolid()) {
 				l.entities.add(new Enemy(x * Tile.SIZE, y * Tile.SIZE));
 				set++;
+			}
+		}
+
+		for (int x = 2; x < 7; x++) {
+			for (int y = height * rs - 3; y > height * rs - 8; y--) {
+				l.tiles[x][y] = new Floor(x, y);
+			}
+		}
+
+		for (int y = 2; y < 7; y++) {
+			for (int x = width * rs - 3; x > width * rs - 8; x--) {
+				l.tiles[x][y] = new Floor(x, y);
 			}
 		}
 

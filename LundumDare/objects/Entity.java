@@ -60,6 +60,10 @@ public class Entity {
 
 	}
 
+	public void death(Level l) {
+		this.death = true;
+	}
+
 	public BufferedImage getTexture() {
 		return texture;
 	}

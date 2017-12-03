@@ -20,7 +20,7 @@ public class Bullet extends Entity {
 
 	public void run(Level l) {
 		if (Math.abs(this.velx) + Math.abs(this.vely) < 1) {
-			this.death = true;
+			death(l);
 		}
 	}
 

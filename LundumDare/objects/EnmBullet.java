@@ -10,6 +10,19 @@ public class EnmBullet extends Bullet {
 		drag = 0.9;
 	}
 
+	@Override
+	public void run(Level l) {
+		double dist = Math.pow(l.player.x - this.x, 2) + Math.pow(l.player.y - this.y, 2);
+		if (dist < getHitbox() * Tile.SIZE * 3) {
+			death(l);
+			l.player.hit();
+		}
+
+		if (Math.abs(this.velx) + Math.abs(this.vely) < 1) {
+			death(l);
+		}
+	}
+
 	public BufferedImage getTexture() {
 		return texture;
 	}
