@@ -1,29 +1,40 @@
+import java.awt.image.BufferedImage;
 
 public class Entity {
+
+	static BufferedImage texture;
+	boolean death = false;
 
 	double x;
 	double y;
 
 	double velx;
 	double vely;
-	int hb = Tile.SIZE / 2;
+
+	double drag = 0.4;
 
 	public Entity() {
 
 	}
 
 	public void update(Level l) {
+		run(l);
 
 		this.x += this.velx;
 		this.y += this.vely;
 
 		checkHitbox(l);
 
-		this.velx *= 0.7;
-		this.vely *= 0.7;
+		this.velx *= drag;
+		this.vely *= drag;
+	}
+
+	public void run(Level l) {
 	}
 
 	public void checkHitbox(Level l) {
+
+		int hb = getHitbox();
 
 		Tile xm = l.getTileAt(x - hb, y);
 		Tile xp = l.getTileAt(x + hb, y);
@@ -47,5 +58,13 @@ public class Entity {
 			this.vely = 0;
 		}
 
+	}
+
+	public BufferedImage getTexture() {
+		return texture;
+	}
+
+	public int getHitbox() {
+		return 4;
 	}
 }

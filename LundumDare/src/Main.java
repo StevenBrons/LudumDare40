@@ -16,6 +16,8 @@ public class Main {
 			public void run() {
 				while (true) {
 					long milis = System.currentTimeMillis();
+						
+					level.update();
 					f.screen.drawAll(level);
 					try {
 						int t = (int) (100 - (System.currentTimeMillis() - milis));
@@ -30,22 +32,6 @@ public class Main {
 			}
 		});
 		t.start();
-
-		Thread run = new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				while (true) {
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					level.update();
-				}
-			}
-		});
-		run.start();
 
 	}
 

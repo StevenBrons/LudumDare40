@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Level implements Serializable {
 
@@ -10,14 +11,19 @@ public class Level implements Serializable {
 
 	Tile[][] tiles;
 
+	long time = 0;
 	int width;
 	int height;
-	Player player = new Player();
+	Player player;
+	public ArrayList<Entity> entities = new ArrayList<Entity>();
 
 	public Level(int width, int height) {
 		tiles = new Tile[width][height];
 		this.width = width;
 		this.height = height;
+		player = new Player();
+
+		entities.add(player);
 
 		player.x = (Tile.SIZE * 4.5);
 		player.y = width * Tile.SIZE - (Tile.SIZE * 4.5);
@@ -42,8 +48,14 @@ public class Level implements Serializable {
 	}
 
 	public void update() {
-		player.move();
-		player.update(this);
+		time++;
+		for (int i = entities.size() - 1; i >= 0; i--) {
+			entities.get(i).update(this);
+			if (entities.get(i).death) {
+				entities.remove(i);
+			}
+		}
+
 	}
 
 }

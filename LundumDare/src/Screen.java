@@ -34,14 +34,19 @@ public class Screen extends Canvas {
 
 		g.translate(-px, -py);
 
+		drawEntities(g, l);
 		drawTiles(g, l);
 
-		g.setColor(Color.RED);
-		g.fillRect((int) px - l.player.hb, (int) py - l.player.hb, l.player.hb * 2, l.player.hb * 2);
-		g.setColor(Color.RED);
 		// drawMaze(g, l);
 
 		bs.show();
+	}
+
+	public void drawEntities(Graphics2D g, Level l) {
+		for (Entity ent : l.entities) {
+			int hb = ent.getHitbox();
+			g.drawImage(ent.getTexture(), (int) ent.x - hb, (int) ent.y - hb, hb * 2, hb * 2, null);
+		}
 	}
 
 	// private void drawMaze(Graphics2D g, Level l) {
@@ -78,8 +83,8 @@ public class Screen extends Canvas {
 		int w = (getWidth() / Tile.SIZE) + 1;
 		int h = (getHeight() / Tile.SIZE) + 1;
 
-		for (int x = 0; x < w; x += 1) {
-			for (int y = 0; y < h; y += 1) {
+		for (int x = -20; x < w; x += 1) {
+			for (int y = -20; y < h; y += 1) {
 				Tile t = l.getTileAt(x * Tile.SIZE, y * Tile.SIZE);
 				g.drawImage(t.getTexture(), x * Tile.SIZE, y * Tile.SIZE, Tile.SIZE, Tile.SIZE, null);
 			}

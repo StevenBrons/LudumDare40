@@ -2,11 +2,11 @@ import java.awt.image.BufferedImage;
 
 public class Floor extends Tile {
 
+	static BufferedImage texture = Loader.getTexture("floor");
+	
 	public Floor(int x, int y) {
 		super(x, y);
 	}
-
-	static BufferedImage texture = Loader.getTexture("floor");
 
 	@Override
 	boolean isSolid() {

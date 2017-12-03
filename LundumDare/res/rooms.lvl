@@ -8,6 +8,9 @@
 # type 4: all sides exit
 
 
+
+#TYPE 0
+
 type 0 tiles
 w w w f f f w w w
 w f f f f f f f w
@@ -18,6 +21,56 @@ w f f f f f f f w
 w f f f f f f f w
 w f f f f f f f w
 w w w w w w w w w
+
+type 0 tiles
+w w w f f f w w w
+w f f f f f f f w
+w f f f f f f f w
+w f f w w w f f w
+w f f w w w f f w
+w f f w w w f f w
+w f f f f f f f w
+w f f f f f f f w
+w w w w w w w w w
+
+type 0 tiles
+w w w f f f w w w
+w w w f f f w w w
+w w f f f f f w w
+w f f f f f f f w
+w f f f f f f f w
+w f f f f f f f w
+w w f f f f f w w
+w w w f f f w w w
+w w w w w w w w w
+
+type 0 tiles
+w w w f f f w w w
+w w w f f f w w w
+w w w f f f w w w
+w w w f f f w w w
+w w w f f f w w w
+w w w f f f w w w
+w w w w w w w w w
+w w w w w w w w w
+w w w w w w w w w
+
+type 0 tiles
+w w w f f f w w w
+w f f f f f f f w
+w f w f w f w f w
+w f f f f f f f w
+w f w f w f w f w
+w f f f f f f f w
+w f w f w f w f w
+w f f f f f f f w
+w w w w w w w w w
+
+
+
+#TYPE 1
+
+
 
 type 1 tiles
 w w w f f f w w w
@@ -30,6 +83,111 @@ w f f f f f f f w
 w f f f f f f f w
 w w w w w w w w w
 
+type 1 tiles
+w w w f f f w w w
+w w w f f f w w w
+w w f f f f f w w
+w f f f f f f f f
+w f f f f f f f f
+w f f f f f f f f
+w w f f f f f w w
+w w w f f f w w w
+w w w w w w w w w
+
+type 1 tiles
+w w w f f f w w w
+w w w f f f w w w
+w w w f f f w w w
+w w w f f f f f f
+w w w f f f f f f
+w w w f f f f f f
+w w w w w w w w w
+w w w w w w w w w
+w w w w w w w w w
+
+type 1 tiles
+w w w f f f w w w
+w f f f f f f f w
+w f f f f f f f w
+w f f w w w f f f
+w f f w w w f f f
+w f f w w w f f f
+w f f f f f f f w
+w f f f f f f f w
+w w w w w w w w w
+
+type 1 tiles
+w w w f f f w w w
+w w f f f f w w w
+w f f f f w w w w
+w f f f w w w f f
+w f f w w w f f f
+w f f w w f f f f
+w f f f f f f f w
+w f f f f f f w w
+w w w w w w w w w
+
+type 1 tiles
+w w w f f f f w w
+w w w f f f f w w
+w w w f f f f f f
+w w w f f f f f f
+w w w f f f f f f
+w w w f f f f f f
+w w w w w w w w w
+w w w w w w w w w
+w w w w w w w w w
+
+type 1 tiles
+w w w f f f w w w
+w f f f f f f f w
+w f w f w f w f w
+w f f f f f f f f
+w f w f w f w f f
+w f f f f f f f f
+w f w f w f w f w
+w f f f f f f f w
+w w w w w w w w w
+
+type 1 tiles
+w w w f f f w w w
+w f f f f f f f w
+w f f f w f f f w
+w f f f w f f f f
+w f w w w w w f f
+w f f f w f f f f
+w f f f w f f f w
+w f f f f f f f w
+w w w w w w w w w
+
+type 1 tiles
+w w w f f f w w w
+w w w f f f w w w
+w w f f f f f w w
+w w f f f f f f f
+w w f f f f f f f
+w w f f f f f f f
+w w w f f f f w w
+w w w w w w w w w
+w w w w w w w w w
+
+type 1 tiles
+w w w f f f w w w
+w f f f f f f f w
+w f w w f w w f w
+w f w w f w w f f
+w f f f f f f f f
+w f w w f w w f f
+w f w w f w w f w
+w f f f f f f f w
+w w w w w w w w w
+
+
+
+#TYPE 2
+
+
+
 type 2 tiles
 w w w f f f w w w
 w f f f f f f f w
@@ -41,16 +199,138 @@ w f f f f f f f w
 w f f f f f f f w
 w w w f f f w w w
 
+type 2 tiles
+w w w f f f w w w
+w w w f f f w w w
+w w w f f f w w w
+w w w f f f w w w
+w w w f f f w w w
+w w w f f f w w w
+w w w f f f w w w
+w w w f f f w w w
+w w w f f f w w w
+
+type 2 tiles
+w w w f f f w w w
+w f f f f f f f w
+w f f f f f f f w
+w f f w w w f f w
+w f f w w w f f w
+w f f w w w f f w
+w f f f f f f f w
+w f f f f f f f w
+w w w f f f w w w
+
+type 2 tiles
+w w w f f f w w w
+w w f f f f f w w
+w f f f f f f f w
+w f f f f f f f w
+w f f f f f f f w
+w w f f f f f w w
+w w w f f f w w w
+w w w w f w w w w
+w w w w f w w w w
+
+type 2 tiles
+w w w f f f w w w
+w f f f f f f f w
+w f f w f w f f w
+w f f f f f f f w
+w f w f w f w f w
+w f f f f f f f w
+w f f w f w f f w
+w f f f f f f f w
+w w w f f f w w w
+
+type 2 tiles
+w w w f f f w w w
+w w f f f f f w w
+w w f f f f f w w
+w w f f f f f w w
+w w f f f f f w w
+w w f f f f f w w
+w w f f f f f w w
+w w f f f f f w w
+w w w f f f w w w
+
+type 2 tiles
+w f f f f f f f w
+w f f f f f f f w
+w f f f f f f f w
+w w w f f f w w w
+w w w f f f w w w
+w w w f f f w w w
+w f f f f f f f w
+w f f f f f f f w
+w f f f f f f f w
+
+
+
+#TYPE 3
+
+
+
 type 3 tiles
 w w w f f f w w w
 w f f f f f f f w
 w f f f f f f f w
 w f f f f f f f f
-w f f f f f f f f
+w w w w w f f f f
 w f f f f f f f f
 w f f f f f f f w
 w f f f f f f f w
 w w w f f f w w w
+
+type 3 tiles
+w w w f f f w w w
+w w f f f f f w w
+w f f f f f f f w
+w f f f f f f f f
+w f f f f f f f f
+w f f f f f f f f
+w f f f f f f f w
+w w f f f f f w w
+w w w f f f w w w
+
+type 3 tiles
+w w w f f f w w w
+w w w f f f w w w
+w w f f f f f w w
+w f f f f f f f f
+w f f f f f f f f
+w f f f f f f f f
+w w f f f f f w w
+w w w f f f w w w
+w w w f f f w w w
+
+type 3 tiles
+w w w f f f w w w
+w w w f f f w w w
+w w w f f f w w w
+w w w f f f f f f
+w w w f f f f f f
+w w w f f f f f f
+w w w f f f w w w
+w w w f f f w w w
+w w w f f f w w w
+
+type 3 tiles
+w w w f f f w w w
+w f f f f f f f f
+w f f f f f f f f
+w w w w w w f f f
+w w w w w w f f f
+w w w w w w f f f
+w f f f f f f f f
+w f f f f f f f f
+w w w f f f w w w
+
+
+
+#TYPE 4
+
+
 
 type 4 tiles
 w w w f f f w w w
@@ -61,4 +341,70 @@ f f f f f f f f f
 f f f f f f f f f
 w f f f f f f f w
 w f f f f f f f w
+w w w f f f w w w
+
+type 4 tiles
+w w w f f f w w w
+w w w f f f w w w
+w w w f f f w w w
+f f f f f f f f f
+f f f f f f f f f
+f f f f f f f f f
+w w w f f f w w w
+w w w f f f w w w
+w w w f f f w w w
+
+type 4 tiles
+w w w f f f w w w
+w w w f f f w w w
+w w w f f f w w w
+f f f f f f f f f
+f f f f f f f f f
+f f f f f f f f f
+w w w f f f w w w
+w w w f f f w w w
+w w w f f f w w w
+
+type 4 tiles
+w w w f f f w w w
+w w w f f f w w w
+w w f f f f f w w
+f f f f f f f f f
+f f f f f f f f f
+f f f f f f f f f
+w w f f f f f w w
+w w w f f f w w w
+w w w f f f w w w
+
+type 4 tiles
+w f f f f f f f w
+f f f f f f f f f
+f f f f f f f f f
+f f f f f f f f f
+f f f f f f f f f
+f f f f f f f f f
+f f f f f f f f f
+f f f f f f f f f
+w f f f f f f f w
+
+type 4 tiles
+w f f f f f f f w
+f f f f f f f f f
+f f f f f f f f f
+f f f w w w f f f
+f f f w w w f f f
+f f f w w w f f f
+f f f f f f f f f
+f f f f f f f f f
+w f f f f f f f w
+
+type 4 tiles
+w w w f f f w w w
+w w w f f f w w w
+w w w f f f w w w
+w w w f f f w w w
+f f f f f f f f f
+w w w f f f w w w
+w w w f f f w w w
+w w w f f f w w w
 w w w f f f w w w

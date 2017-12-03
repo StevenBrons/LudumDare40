@@ -7,6 +7,7 @@ public class Generator {
 	String roomsString = Loader.getLevelFile();
 	int width;
 	int height;
+	Random rnd = new Random();
 
 	ArrayList<Cell> grid = new ArrayList<>();
 	ArrayList<Cell> stack = new ArrayList<Cell>();
@@ -23,32 +24,26 @@ public class Generator {
 	public Level generate() {
 		Level l = new Level(width * Room.ROOM_SIZE, height * Room.ROOM_SIZE);
 		generateMaze();
-		//
-		// for (Room r : rooms) {
-		// System.out.println(":");
-		// System.out.println(r);
-		// System.out.println(r.north);
-		// System.out.println(r.east);
-		// System.out.println(r.south);
-		// System.out.println(r.west);
-		// System.out.println();
-		// }
 
 		Room[][] floorPlan = chooseRooms();
-
-		// for (int x = 0; x < width; x++) {
-		// for (int y = 0; y < height; y++) {
-		// System.out.println(floorPlan[x][y]);
-		// }
-		// }
-
-		String[][] fp = new String[width * Room.ROOM_SIZE][height * Room.ROOM_SIZE];
 
 		int rs = Room.ROOM_SIZE;
 
 		for (int x = 0; x < width * rs; x++) {
 			for (int y = 0; y < height * rs; y++) {
 				l.tiles[x][y] = getTileFromString(floorPlan[y / rs][x / rs].tiles[x % rs][y % rs], x, y);
+			}
+		}
+
+		int set = 0;
+		int enemies = 100;
+		while (set < enemies) {
+			int x = rnd.nextInt(width * rs);
+			int y = rnd.nextInt(height * rs);
+
+			if (!l.tiles[x][y].isSolid()) {
+				l.entities.add(new Enemy(x * Tile.SIZE, y * Tile.SIZE));
+				set++;
 			}
 		}
 
@@ -80,17 +75,13 @@ public class Generator {
 		Room[][] plan = new Room[width][height];
 
 		for (int i = 0; i < grid.size(); i++) {
-			System.out.println(grid.get(i));
 			plan[grid.get(i).x][grid.get(i).y] = getFitRoom(grid.get(i));
-			System.out.println(plan[grid.get(i).x][grid.get(i).y]);
 		}
 
 		return plan;
 	}
 
 	public Room getFitRoom(Cell c) {
-
-		Random rnd = new Random();
 		int i = rnd.nextInt(rooms.size());
 
 		while (true) {
