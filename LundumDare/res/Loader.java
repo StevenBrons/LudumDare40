@@ -1,6 +1,5 @@
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -12,7 +11,7 @@ public class Loader {
 
 	static BufferedImage getTexture(String name) {
 		try {
-			return ImageIO.read(l.getClass().getResource("./textures/" + name + ".png"));
+			return ImageIO.read(l.getClass().getResource("/textures/" + name + ".png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -23,7 +22,7 @@ public class Loader {
 		try {
 			String tot = "";
 			BufferedReader br = new BufferedReader(
-					new InputStreamReader(l.getClass().getResourceAsStream("./rooms.lvl")));
+					new InputStreamReader(l.getClass().getResourceAsStream("/rooms.lvl")));
 			String s = br.readLine();
 			while (s != null) {
 				tot += s + "\n";

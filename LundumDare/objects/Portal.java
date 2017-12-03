@@ -14,7 +14,7 @@ public class Portal extends Entity {
 
 	@Override
 	public void run(Level l) {
-		double dist = Math.pow(l.player.x - this.x, 2) + Math.pow(l.player.y - this.y, 2);
+		double dist = Math.pow(Level.player.x - this.x, 2) + Math.pow(Level.player.y - this.y, 2);
 		if (dist < Tile.SIZE * 10) {
 			l.next();
 		}

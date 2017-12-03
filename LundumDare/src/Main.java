@@ -2,22 +2,27 @@
 public class Main {
 
 	static Level level;
+	static Frame f = new Frame();
+	static boolean running = false;
 
 	public static void main(String args[]) {
 
 		Generator g = new Generator();
 		level = g.generate();
+		start();
+	}
 
-		Frame f = new Frame();
-
+	public static void start() {
 		Thread t = new Thread(new Runnable() {
 
 			@Override
 			public void run() {
 				while (true) {
 					long milis = System.currentTimeMillis();
-						
-					level.update();
+
+					if (running) {
+						level.update();
+					}
 					f.screen.drawAll(level);
 					try {
 						int t = (int) (100 - (System.currentTimeMillis() - milis));
@@ -32,7 +37,6 @@ public class Main {
 			}
 		});
 		t.start();
-
 	}
 
 }

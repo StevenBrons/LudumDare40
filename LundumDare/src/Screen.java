@@ -15,12 +15,12 @@ public class Screen extends Canvas {
 	public static final int ZOOM = 6;
 
 	public Screen() {
-		addKeyListener(Main.level.player.input);
+		addKeyListener(Player.input);
 	}
 
 	public void drawAll(Level l) {
-		double px = Math.floor(l.player.x);
-		double py = Math.floor(l.player.y);
+		double px = Math.floor(Level.player.x);
+		double py = Math.floor(Level.player.y);
 
 		BufferStrategy bs = getBufferStrategy();
 		if (bs == null) {
@@ -42,8 +42,6 @@ public class Screen extends Canvas {
 
 		drawUI(g, l);
 
-		// drawMaze(g, l);
-
 		bs.show();
 	}
 
@@ -52,10 +50,10 @@ public class Screen extends Canvas {
 		g.drawImage(Health.texture, (int) i, (int) i, (int) (i * 3), (int) (i * 3), null);
 		g.setFont(new Font(null, Font.ITALIC, (int) (i * 3)));
 		g.setColor(Color.WHITE);
-		g.drawString("x" + l.player.health, (int) i * 6, (int) (i * 3.5));
+		g.drawString("x" + Level.player.health, (int) i * 6, (int) (i * 3.5));
 		g.drawImage(Energy.texture, (int) (getWidth() - i - (12 * i)), (int) (i * 0.8), (int) (4 * i), (int) (4 * i),
 				null);
-		g.drawString("x" + l.player.energy, (int) (getWidth() - i - (6 * i)), (int) (i * 3.5));
+		g.drawString("x" + Level.player.energy, (int) (getWidth() - i - (6 * i)), (int) (i * 3.5));
 
 	}
 

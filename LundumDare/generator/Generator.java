@@ -37,7 +37,6 @@ public class Generator {
 
 		int set = 0;
 		int enemies = (int) Math.ceil((double) Level.player.health * 3.0 + ((double) Level.player.energy / 3.0));
-		System.out.println(enemies);
 		while (set < enemies) {
 			int x = rnd.nextInt(width * rs);
 			int y = rnd.nextInt(height * rs);
@@ -45,6 +44,14 @@ public class Generator {
 			if (!l.tiles[x][y].isSolid()) {
 				l.entities.add(new Enemy(x * Tile.SIZE, y * Tile.SIZE));
 				set++;
+			}
+		}
+		for (int i = l.entities.size() - 1; i >= 0; i--) {
+			if (l.entities.get(i) instanceof Enemy) {
+				double dist = Math.pow(Level.player.x - l.entities.get(i).x, 2) + Math.pow(Level.player.y - l.entities.get(i).y, 2);
+				if (dist < Tile.SIZE * 600) {
+					l.entities.remove(i);
+				}
 			}
 		}
 
@@ -95,15 +102,15 @@ public class Generator {
 	}
 
 	public Room getFitRoom(Cell c) {
-		int i = rnd.nextInt(rooms.size());
+		ArrayList<Room> fitRooms = new ArrayList<>();
 
-		while (true) {
-			Room r = rooms.get(i % rooms.size());
+		for (Room r : rooms) {
 			if (r.north == c.north && r.east == c.east && r.south == c.south && r.west == c.west) {
-				return r;
+				fitRooms.add(r);
 			}
-			i++;
 		}
+		int i = rnd.nextInt(fitRooms.size());
+		return fitRooms.get(i);
 
 	}
 

@@ -10,8 +10,8 @@ public class Energy extends Entity {
 
 	@Override
 	public void run(Level l) {
-		double dist = Math.pow(l.player.x - this.x, 2) + Math.pow(l.player.y - this.y, 2);
-		double angle = Math.atan2(l.player.y - this.y, l.player.x - this.x);
+		double dist = Math.pow(Level.player.x - this.x, 2) + Math.pow(Level.player.y - this.y, 2);
+		double angle = Math.atan2(Level.player.y - this.y, Level.player.x - this.x);
 
 		if (dist < Tile.SIZE * 30) {
 			this.velx = Math.cos(angle) * 1;
@@ -20,7 +20,7 @@ public class Energy extends Entity {
 
 		if (dist < Tile.SIZE * 2) {
 			death(l);
-			l.player.energy();
+			Level.player.energy();
 		}
 	}
 

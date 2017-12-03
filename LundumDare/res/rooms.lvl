@@ -182,22 +182,23 @@ w f w w f w w f w
 w f f f f f f f w
 w w w w w w w w w
 
+w f f f f f f f w
+w f f f f f f f f
+w f f f f f f f f
+w f f f w f f f f
+w f f w w w f f f
+w f f f w f f f f
+w f f f f f f f f
+w f f f f f f f f
+w w w w w w w w w
+
 
 
 #TYPE 2
 
 
 
-type 2 tiles
-w w w f f f w w w
-w f f f f f f f w
-w f f f f f f f w
-w f f f f f f f w
-w f f f f f f f w
-w f f f f f f f w
-w f f f f f f f w
-w f f f f f f f w
-w w w f f f w w w
+
 
 type 2 tiles
 w w w f f f w w w
@@ -326,6 +327,16 @@ w f f f f f f f f
 w f f f f f f f f
 w w w f f f w w w
 
+type 2 tiles
+w w w f f f w w w
+w f f f f f f f w
+w f f f f f f f w
+w f f f f f f f w
+w f f f f f f f w
+w f f f f f f f w
+w f f f f f f f w
+w f f f f f f f w
+w w w f f f w w w
 
 
 #TYPE 4
