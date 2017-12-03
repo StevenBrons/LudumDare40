@@ -25,8 +25,6 @@ public class Entity {
 
 	public void checkHitbox(Level l) {
 
-		Tile t = null;
-
 		Tile xm = l.getTileAt(x - hb, y);
 		Tile xp = l.getTileAt(x + hb, y);
 		Tile ym = l.getTileAt(x, y - hb);

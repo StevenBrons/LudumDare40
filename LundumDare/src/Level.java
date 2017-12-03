@@ -14,8 +14,12 @@ public class Level implements Serializable {
 	Tile defaultTile = new Tile(-1, -1);
 
 	Player player = new Player();
+	Generator g = new Generator();
 
 	public Level() {
+
+		g.generate();
+
 		player.x = 25 * Tile.SIZE;
 		player.y = 25 * Tile.SIZE;
 
