@@ -1,12 +1,15 @@
 #
+# weight
 #
-#
-#
-#
-#
+# type 0: north exit
+# type 1: north and east exit
+# type 2: north and south exit
+# type 3: north and east and south exit
+# type 4: all sides exit
 
-1
-w w w w f w w w w
+
+type 0 tiles
+w w w f f f w w w
 w f f f f f f f w
 w f f f f f f f w
 w f f f f f f f w
@@ -16,13 +19,46 @@ w f f f f f f f w
 w f f f f f f f w
 w w w w w w w w w
 
-2
-w w w w f w w w w
-w f f f f f f f w
+type 1 tiles
+w w w f f f w w w
 w f f f f f f f w
 w f f f f f f f w
 w f f f f f f f f
-w f f f f f f f w
+w f f f f f f f f
+w f f f f f f f f
 w f f f f f f f w
 w f f f f f f f w
 w w w w w w w w w
+
+type 2 tiles
+w w w f f f w w w
+w f f f f f f f w
+w f f f f f f f w
+w f f f f f f f w
+w f f f f f f f w
+w f f f f f f f w
+w f f f f f f f w
+w f f f f f f f w
+w w w f f f w w w
+
+type 3 tiles
+w w w f f f w w w
+w f f f f f f f w
+w f f f f f f f w
+w f f f f f f f f
+w f f f f f f f f
+w f f f f f f f f
+w f f f f f f f w
+w f f f f f f f w
+w w w f f f w w w
+
+type 4 tiles
+w w w f f f w w w
+w f f f f f f f w
+w f f f f f f f w
+f f f f f f f f f
+f f f f f f f f f
+f f f f f f f f f
+w f f f f f f f w
+w f f f f f f f w
+w w w f f f w w w

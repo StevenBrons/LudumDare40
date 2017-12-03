@@ -11,7 +11,7 @@ public class Screen extends Canvas {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public static final int ZOOM = 4;
+	public static final int ZOOM = 6;
 
 	public Screen() {
 		addKeyListener(Main.level.player.input);
@@ -29,51 +29,50 @@ public class Screen extends Canvas {
 		Graphics2D g = (Graphics2D) bs.getDrawGraphics();
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, getWidth(), getHeight());
-		// g.translate(getWidth() / 2, getHeight() / 2);
-		// g.scale(ZOOM, ZOOM);
-		//
-		// g.translate(-px, -py);
-		//
-		// drawTiles(g, l);
-		//
-		// g.setColor(Color.RED);
-		// g.fillRect((int) px - l.player.hb, (int) py - l.player.hb, l.player.hb * 2,
-		// l.player.hb * 2);
+		g.translate(getWidth() / 2, getHeight() / 2);
+		g.scale(ZOOM, ZOOM);
+
+		g.translate(-px, -py);
+
+		drawTiles(g, l);
+
 		g.setColor(Color.RED);
-		drawMaze(g, l);
+		g.fillRect((int) px - l.player.hb, (int) py - l.player.hb, l.player.hb * 2, l.player.hb * 2);
+		g.setColor(Color.RED);
+		// drawMaze(g, l);
 
 		bs.show();
 	}
 
-	private void drawMaze(Graphics2D g, Level l) {
-
-		int w = 30;
-
-		for (Cell c : l.g.grid) {
-			int x = w * 3 * c.x;
-			int y = w * 3 * c.y;
-
-			if (c.north) {
-				g.fillRect(x + w, y, 30, 30);
-			}
-			if (c.east) {
-				g.fillRect(x + 2 * w, y + w, 30, 30);
-			}
-			if (c.south) {
-				g.fillRect(x + w, y + 2 * w, 30, 30);
-			}
-			if (c.west) {
-				g.fillRect(x, y + w, 30, 30);
-			}
-
-			g.fillRect(x, y, 30, 30);
-			g.fillRect(x + 2 * w, y, 30, 30);
-			g.fillRect(x, y + 2 * w, 30, 30);
-			g.fillRect(x + 2 * w, y + 2 * w, 30, 30);
-
-		}
-
-	}
+	// private void drawMaze(Graphics2D g, Level l) {
+	//
+	// int w = 30;
+	//
+	// for (Cell c : l.g.grid) {
+	// int x = w * 3 * c.x;
+	// int y = w * 3 * c.y;
+	//
+	// if (c.north) {
+	// g.fillRect(x + w, y, 30, 30);
+	// }
+	// if (c.east) {
+	// g.fillRect(x + 2 * w, y + w, 30, 30);
+	// }
+	// if (c.south) {
+	// g.fillRect(x + w, y + 2 * w, 30, 30);
+	// }
+	// if (c.west) {
+	// g.fillRect(x, y + w, 30, 30);
+	// }
+	//
+	// g.fillRect(x, y, 30, 30);
+	// g.fillRect(x + 2 * w, y, 30, 30);
+	// g.fillRect(x, y + 2 * w, 30, 30);
+	// g.fillRect(x + 2 * w, y + 2 * w, 30, 30);
+	//
+	// }
+	//
+	// }
 
 	public void drawTiles(Graphics2D g, Level l) {
 		int w = (getWidth() / Tile.SIZE) + 1;
@@ -83,7 +82,6 @@ public class Screen extends Canvas {
 			for (int y = 0; y < h; y += 1) {
 				Tile t = l.getTileAt(x * Tile.SIZE, y * Tile.SIZE);
 				g.drawImage(t.getTexture(), x * Tile.SIZE, y * Tile.SIZE, Tile.SIZE, Tile.SIZE, null);
-
 			}
 		}
 

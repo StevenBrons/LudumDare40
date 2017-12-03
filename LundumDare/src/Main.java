@@ -1,9 +1,12 @@
 
 public class Main {
 
-	static Level level = new Level();
+	static Level level;
 
 	public static void main(String args[]) {
+
+		Generator g = new Generator();
+		level = g.generate();
 
 		Frame f = new Frame();
 
