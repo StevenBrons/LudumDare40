@@ -37,33 +37,17 @@ public class Player extends Entity implements Serializable {
 		public void keyReleased(KeyEvent e) {
 			switch (e.getKeyCode()) {
 			case KeyEvent.VK_W:
-			case KeyEvent.VK_UP:
 				Level.player.UP = false;
 				break;
 			case KeyEvent.VK_S:
-			case KeyEvent.VK_DOWN:
 				Level.player.DOWN = false;
 				break;
 			case KeyEvent.VK_A:
-			case KeyEvent.VK_LEFT:
 				Level.player.LEFT = false;
 				break;
 			case KeyEvent.VK_D:
-			case KeyEvent.VK_RIGHT:
 				Level.player.RIGHT = false;
 				break;
-			// case KeyEvent.VK_I:
-			// Level.player.NORTH = false;
-			// break;
-			// case KeyEvent.VK_L:
-			// Level.player.EAST = false;
-			// break;
-			// case KeyEvent.VK_K:
-			// Level.player.SOUTH = false;
-			// break;
-			// case KeyEvent.VK_J:
-			// Level.player.WEST = false;
-			// break;
 			}
 		}
 
@@ -71,32 +55,31 @@ public class Player extends Entity implements Serializable {
 		public void keyPressed(KeyEvent e) {
 			switch (e.getKeyCode()) {
 			case KeyEvent.VK_W:
-			case KeyEvent.VK_UP:
 				Level.player.UP = true;
 				break;
 			case KeyEvent.VK_S:
-			case KeyEvent.VK_DOWN:
 				Level.player.DOWN = true;
 				break;
 			case KeyEvent.VK_A:
-			case KeyEvent.VK_LEFT:
 				Level.player.LEFT = true;
 				break;
 			case KeyEvent.VK_D:
-			case KeyEvent.VK_RIGHT:
 				Level.player.RIGHT = true;
 				break;
-			case KeyEvent.VK_I:
+			case KeyEvent.VK_UP:
 				Level.player.NORTH = true;
 				break;
-			case KeyEvent.VK_L:
+			case KeyEvent.VK_RIGHT:
 				Level.player.EAST = true;
 				break;
-			case KeyEvent.VK_K:
+			case KeyEvent.VK_DOWN:
 				Level.player.SOUTH = true;
 				break;
-			case KeyEvent.VK_J:
+			case KeyEvent.VK_LEFT:
 				Level.player.WEST = true;
+				break;
+			case KeyEvent.VK_ESCAPE:
+				Main.f.change("menu");
 				break;
 			}
 		}

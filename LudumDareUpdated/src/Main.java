@@ -3,10 +3,8 @@ public class Main {
 
 	static Level level;
 	static Frame f = new Frame();
-	static boolean running = false;
 
 	public static void main(String args[]) {
-
 		Generator g = new Generator();
 		level = g.generate();
 		start();
@@ -20,10 +18,18 @@ public class Main {
 				while (true) {
 					long milis = System.currentTimeMillis();
 
-					if (running) {
-						level.update();
+					switch (f.showing) {
+					case "game":
+						if (f.showing.equals("game")) {
+							level.update();
+							f.screen.drawAll(level);
+						}
+						break;
+					case "menu":
+						f.menu.run();
+						break;
 					}
-					f.screen.drawAll(level);
+
 					try {
 						int t = (int) (100 - (System.currentTimeMillis() - milis));
 						if (t < 0) {

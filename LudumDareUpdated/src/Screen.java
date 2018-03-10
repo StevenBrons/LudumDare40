@@ -64,36 +64,6 @@ public class Screen extends Canvas {
 		}
 	}
 
-	// private void drawMaze(Graphics2D g, Level l) {
-	//
-	// int w = 30;
-	//
-	// for (Cell c : l.g.grid) {
-	// int x = w * 3 * c.x;
-	// int y = w * 3 * c.y;
-	//
-	// if (c.north) {
-	// g.fillRect(x + w, y, 30, 30);
-	// }
-	// if (c.east) {
-	// g.fillRect(x + 2 * w, y + w, 30, 30);
-	// }
-	// if (c.south) {
-	// g.fillRect(x + w, y + 2 * w, 30, 30);
-	// }
-	// if (c.west) {
-	// g.fillRect(x, y + w, 30, 30);
-	// }
-	//
-	// g.fillRect(x, y, 30, 30);
-	// g.fillRect(x + 2 * w, y, 30, 30);
-	// g.fillRect(x, y + 2 * w, 30, 30);
-	// g.fillRect(x + 2 * w, y + 2 * w, 30, 30);
-	//
-	// }
-	//
-	// }
-
 	public void drawTiles(Graphics2D g, Level l) {
 		int w = (getWidth() / Tile.SIZE) + 1;
 		int h = (getHeight() / Tile.SIZE) + 1;
