@@ -81,6 +81,9 @@ public class Player extends Entity implements Serializable {
 			case KeyEvent.VK_ESCAPE:
 				Main.f.change("menu");
 				break;
+			case KeyEvent.VK_F5:
+				Main.level.next();
+				break;
 			}
 		}
 	};

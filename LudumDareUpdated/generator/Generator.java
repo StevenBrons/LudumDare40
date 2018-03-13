@@ -16,8 +16,8 @@ public class Generator {
 	Cell current;
 
 	public Generator() {
-		width = 5;
-		height = 5;
+		width = rnd.nextInt(10) + 2;
+		height = rnd.nextInt(10) + 2;
 		roomReader();
 	}
 
@@ -31,12 +31,12 @@ public class Generator {
 
 		for (int x = 0; x < width * rs; x++) {
 			for (int y = 0; y < height * rs; y++) {
-				l.tiles[x][y] = getTileFromString(floorPlan[y / rs][x / rs].tiles[x % rs][y % rs], x, y);
+				l.tiles[x][y] = getTileFromString(floorPlan[x / rs][y / rs].tiles[y % rs][x % rs], x, y);
 			}
 		}
 
 		int set = 0;
-		int enemies = (int) Math.ceil((double) Level.player.health * 3.0 + ((double) Level.player.energy / 3.0));
+		int enemies = width * height;
 		while (set < enemies) {
 			int x = rnd.nextInt(width * rs);
 			int y = rnd.nextInt(height * rs);
@@ -46,23 +46,38 @@ public class Generator {
 				set++;
 			}
 		}
+
+		int startRoomX = rnd.nextInt(2) == 0 ? 0 : width - 1;
+		int startRoomY = rnd.nextInt(2) == 0 ? 0 : height - 1;
+
+		Level.player.x = (startRoomX * rs + 4.5) * Tile.SIZE;
+		Level.player.y = (startRoomY * rs + 4.5) * Tile.SIZE;
+
+		int endRoomX = startRoomX == 0 ? width - 1 : 0;
+		int endRoomY = startRoomY == 0 ? height - 1 : 0;
+
 		for (int i = l.entities.size() - 1; i >= 0; i--) {
 			if (l.entities.get(i) instanceof Enemy) {
-				double dist = Math.pow(Level.player.x - l.entities.get(i).x, 2) + Math.pow(Level.player.y - l.entities.get(i).y, 2);
-				if (dist < Tile.SIZE * 600) {
+				double dist = Math.pow(Level.player.x - l.entities.get(i).x, 2)
+						+ Math.pow(Level.player.y - l.entities.get(i).y, 2);
+				if (dist < Tile.SIZE * 900) {
 					l.entities.remove(i);
 				}
 			}
 		}
 
-		for (int x = 2; x < 7; x++) {
-			for (int y = height * rs - 3; y > height * rs - 8; y--) {
+		Portal portal = new Portal((endRoomX * rs * Tile.SIZE) + Tile.SIZE * 4.5,
+				(endRoomY * rs * Tile.SIZE) + Tile.SIZE * 4.5);
+		l.entities.add(portal);
+
+		for (int x = (startRoomX * rs) + 2; x < (startRoomX * rs) + 7; x++) {
+			for (int y = (startRoomY * rs) + 2; y < (startRoomY * rs) + 7; y++) {
 				l.tiles[x][y] = new Floor(x, y);
 			}
 		}
 
-		for (int y = 2; y < 7; y++) {
-			for (int x = width * rs - 3; x > width * rs - 8; x--) {
+		for (int x = (endRoomX * rs) + 2; x < (endRoomX * rs) + 7; x++) {
+			for (int y = (endRoomY * rs) + 2; y < (endRoomY * rs) + 7; y++) {
 				l.tiles[x][y] = new Floor(x, y);
 			}
 		}
@@ -118,8 +133,8 @@ public class Generator {
 		grid.clear();
 		stack.clear();
 
-		for (int y = 0; y < width; y++) {
-			for (int x = 0; x < height; x++) {
+		for (int y = 0; y < height; y++) {
+			for (int x = 0; x < width; x++) {
 				Cell cell = new Cell(x, y, width, height);
 				grid.add(cell);
 

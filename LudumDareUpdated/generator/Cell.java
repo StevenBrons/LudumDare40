@@ -29,17 +29,17 @@ class Cell {
 		Cell bottom = null;
 		Cell left = null;
 
-		if (index(x, y - 1) != -1) {
-			top = grid.get(index(x, y - 1));
+		if (get(x, y - 1, grid) != null) {
+			top = get(x, y - 1, grid);
 		}
-		if (index(x + 1, y) != -1) {
-			right = grid.get(index(x + 1, y));
+		if (get(x + 1, y, grid) != null) {
+			right = get(x + 1, y, grid);
 		}
-		if (index(x, y + 1) != -1) {
-			bottom = grid.get(index(x, y + 1));
+		if (get(x, y + 1, grid) != null) {
+			bottom = get(x, y + 1, grid);
 		}
-		if (index(x - 1, x) != -1) {
-			left = grid.get(index(x - 1, y));
+		if (get(x - 1, x, grid) != null) {
+			left = get(x - 1, y, grid);
 		}
 
 		if (top != null && !top.visited) {
@@ -63,6 +63,15 @@ class Cell {
 			return null;
 		}
 
+	}
+
+	public Cell get(int x, int y, ArrayList<Cell> grid) {
+		for (int i = 0; i < grid.size(); i++) {
+			if (grid.get(i).x == x && grid.get(i).y == y) {
+				return grid.get(i);
+			}
+		}
+		return null;
 	}
 
 	public int index(int x, int y) {

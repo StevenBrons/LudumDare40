@@ -7,7 +7,7 @@ public class Main {
 	public static void main(String args[]) {
 		Generator g = new Generator();
 		level = g.generate();
-		start();
+		start();		
 	}
 
 	public static void start() {

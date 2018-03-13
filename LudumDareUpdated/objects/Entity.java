@@ -11,7 +11,7 @@ public class Entity {
 	double velx;
 	double vely;
 
-	double drag = 0.4;
+	double drag = 0.5;
 
 	public Entity() {
 

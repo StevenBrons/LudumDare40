@@ -22,10 +22,8 @@ public class Level implements Serializable {
 		tiles = new Tile[width][height];
 		this.width = width;
 		this.height = height;
-		Portal portal = new Portal(width * Tile.SIZE - (Tile.SIZE * 4.5), (Tile.SIZE * 4.5));
 
 		entities.add(player);
-		entities.add(portal);
 
 		player.x = (Tile.SIZE * 4.5);
 		player.y = width * Tile.SIZE - (Tile.SIZE * 4.5);
@@ -62,7 +60,6 @@ public class Level implements Serializable {
 	}
 
 	public void next() {
-		player.energy += 10;
 		Generator g = new Generator();
 		Main.level = g.generate();
 	}
