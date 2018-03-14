@@ -15,9 +15,11 @@ public class Generator {
 
 	Cell current;
 
+	double difficulty = 1;
+
 	public Generator() {
-		width = rnd.nextInt(10) + 2;
-		height = rnd.nextInt(10) + 2;
+		width = rnd.nextInt(8) + 2;
+		height = rnd.nextInt(8) + 2;
 		roomReader();
 	}
 
@@ -36,7 +38,7 @@ public class Generator {
 		}
 
 		int set = 0;
-		int enemies = width * height;
+		int enemies = (int) Math.ceil(width * height * difficulty);
 		while (set < enemies) {
 			int x = rnd.nextInt(width * rs);
 			int y = rnd.nextInt(height * rs);
@@ -50,16 +52,16 @@ public class Generator {
 		int startRoomX = rnd.nextInt(2) == 0 ? 0 : width - 1;
 		int startRoomY = rnd.nextInt(2) == 0 ? 0 : height - 1;
 
-		Level.player.x = (startRoomX * rs + 4.5) * Tile.SIZE;
-		Level.player.y = (startRoomY * rs + 4.5) * Tile.SIZE;
+		l.player.x = (startRoomX * rs + 4.5) * Tile.SIZE;
+		l.player.y = (startRoomY * rs + 4.5) * Tile.SIZE;
 
 		int endRoomX = startRoomX == 0 ? width - 1 : 0;
 		int endRoomY = startRoomY == 0 ? height - 1 : 0;
 
 		for (int i = l.entities.size() - 1; i >= 0; i--) {
 			if (l.entities.get(i) instanceof Enemy) {
-				double dist = Math.pow(Level.player.x - l.entities.get(i).x, 2)
-						+ Math.pow(Level.player.y - l.entities.get(i).y, 2);
+				double dist = Math.pow(l.player.x - l.entities.get(i).x, 2)
+						+ Math.pow(l.player.y - l.entities.get(i).y, 2);
 				if (dist < Tile.SIZE * 900) {
 					l.entities.remove(i);
 				}
@@ -70,17 +72,17 @@ public class Generator {
 				(endRoomY * rs * Tile.SIZE) + Tile.SIZE * 4.5);
 		l.entities.add(portal);
 
-		for (int x = (startRoomX * rs) + 2; x < (startRoomX * rs) + 7; x++) {
-			for (int y = (startRoomY * rs) + 2; y < (startRoomY * rs) + 7; y++) {
-				l.tiles[x][y] = new Floor(x, y);
-			}
-		}
+		l.setTileAt(l.player.x, l.player.y, new Floor(-1, -1));
+		l.setTileAt(l.player.x, l.player.y - Tile.SIZE, new Floor(-1, -1));
+		l.setTileAt(l.player.x - Tile.SIZE, l.player.y, new Floor(-1, -1));
+		l.setTileAt(l.player.x, l.player.y + Tile.SIZE, new Floor(-1, -1));
+		l.setTileAt(l.player.x + Tile.SIZE, l.player.y, new Floor(-1, -1));
 
-		for (int x = (endRoomX * rs) + 2; x < (endRoomX * rs) + 7; x++) {
-			for (int y = (endRoomY * rs) + 2; y < (endRoomY * rs) + 7; y++) {
-				l.tiles[x][y] = new Floor(x, y);
-			}
-		}
+		l.setTileAt(portal.x, portal.y, new Floor(-1, -1));
+		l.setTileAt(portal.x, portal.y - Tile.SIZE, new Floor(-1, -1));
+		l.setTileAt(portal.x - Tile.SIZE, portal.y, new Floor(-1, -1));
+		l.setTileAt(portal.x, portal.y + Tile.SIZE, new Floor(-1, -1));
+		l.setTileAt(portal.x + Tile.SIZE, portal.y, new Floor(-1, -1));
 
 		return l;
 

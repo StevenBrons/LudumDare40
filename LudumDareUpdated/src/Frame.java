@@ -49,6 +49,9 @@ public class Frame extends JFrame {
 	public void change(String str) {
 		showing = str;
 		cards.show(main, str);
+		if (str.equals("game")) {
+			screen.requestFocus();
+		}
 	}
 
 }

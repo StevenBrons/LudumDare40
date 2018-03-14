@@ -8,7 +8,7 @@ public class PlayerBullet extends Bullet {
 		this.x = x;
 		this.y = y;
 
-		int s = 10;
+		int s = 15;
 		drag = 0.9;
 
 		switch (i) {

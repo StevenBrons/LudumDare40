@@ -16,16 +16,17 @@ public class Player extends Entity implements Serializable {
 	int hb = 4;
 	int health = 3;
 	int energy = 20;
+	public double hit = 0;
 
-	boolean UP = false;
-	boolean DOWN = false;
-	boolean LEFT = false;
-	boolean RIGHT = false;
+	static boolean UP = false;
+	static boolean DOWN = false;
+	static boolean LEFT = false;
+	static boolean RIGHT = false;
 
-	boolean NORTH = false;
-	boolean EAST = false;
-	boolean SOUTH = false;
-	boolean WEST = false;
+	static boolean NORTH = false;
+	static boolean EAST = false;
+	static boolean SOUTH = false;
+	static boolean WEST = false;
 
 	public static KeyListener input = new KeyListener() {
 
@@ -37,16 +38,16 @@ public class Player extends Entity implements Serializable {
 		public void keyReleased(KeyEvent e) {
 			switch (e.getKeyCode()) {
 			case KeyEvent.VK_W:
-				Level.player.UP = false;
+				UP = false;
 				break;
 			case KeyEvent.VK_S:
-				Level.player.DOWN = false;
+				DOWN = false;
 				break;
 			case KeyEvent.VK_A:
-				Level.player.LEFT = false;
+				LEFT = false;
 				break;
 			case KeyEvent.VK_D:
-				Level.player.RIGHT = false;
+				RIGHT = false;
 				break;
 			}
 		}
@@ -55,28 +56,28 @@ public class Player extends Entity implements Serializable {
 		public void keyPressed(KeyEvent e) {
 			switch (e.getKeyCode()) {
 			case KeyEvent.VK_W:
-				Level.player.UP = true;
+				UP = true;
 				break;
 			case KeyEvent.VK_S:
-				Level.player.DOWN = true;
+				DOWN = true;
 				break;
 			case KeyEvent.VK_A:
-				Level.player.LEFT = true;
+				LEFT = true;
 				break;
 			case KeyEvent.VK_D:
-				Level.player.RIGHT = true;
+				RIGHT = true;
 				break;
 			case KeyEvent.VK_UP:
-				Level.player.NORTH = true;
+				NORTH = true;
 				break;
 			case KeyEvent.VK_RIGHT:
-				Level.player.EAST = true;
+				EAST = true;
 				break;
 			case KeyEvent.VK_DOWN:
-				Level.player.SOUTH = true;
+				SOUTH = true;
 				break;
 			case KeyEvent.VK_LEFT:
-				Level.player.WEST = true;
+				WEST = true;
 				break;
 			case KeyEvent.VK_ESCAPE:
 				Main.f.change("menu");
@@ -138,7 +139,9 @@ public class Player extends Entity implements Serializable {
 			WEST = false;
 
 		}
-
+		if (hit > 0) {
+			hit -= 0.1;
+		}
 	}
 
 	public BufferedImage getTexture() {
@@ -147,9 +150,11 @@ public class Player extends Entity implements Serializable {
 
 	public void hit() {
 		health--;
+		hit = 1;
 		if (health == 0) {
 			health = 3;
 			energy = 10;
+			Main.level.level = 1;
 			Main.level.next();
 		}
 	}

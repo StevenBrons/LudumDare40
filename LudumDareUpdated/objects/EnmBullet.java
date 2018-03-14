@@ -12,10 +12,10 @@ public class EnmBullet extends Bullet {
 
 	@Override
 	public void run(Level l) {
-		double dist = Math.pow(Level.player.x - this.x, 2) + Math.pow(Level.player.y - this.y, 2);
+		double dist = Math.pow(l.player.x - this.x, 2) + Math.pow(l.player.y - this.y, 2);
 		if (dist < getHitbox() * Tile.SIZE * 3) {
 			death(l);
-			Level.player.hit();
+			l.player.hit();
 		}
 
 		if (Math.abs(this.velx) + Math.abs(this.vely) < 1) {

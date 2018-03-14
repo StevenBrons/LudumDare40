@@ -17,7 +17,6 @@ public class Main {
 			public void run() {
 				while (true) {
 					long milis = System.currentTimeMillis();
-
 					switch (f.showing) {
 					case "game":
 						if (f.showing.equals("game")) {

@@ -15,8 +15,9 @@ public class Level implements Serializable {
 	long color = (long) Math.floor(Math.random() * 10000);
 	int width;
 	int height;
-	static Player player = new Player();
+	Player player = new Player();
 	public ArrayList<Entity> entities = new ArrayList<Entity>();
+	int level = 1;
 
 	public Level(int width, int height) {
 		tiles = new Tile[width][height];
@@ -43,6 +44,17 @@ public class Level implements Serializable {
 
 	}
 
+	public void setTileAt(double d, double e, Tile t) {
+		double x = d / (double) Tile.SIZE;
+		double y = e / (double) Tile.SIZE;
+
+		if (x >= 0 && y >= 0 && x < width && y < height) {
+			tiles[(int) x][(int) y] = t;
+			t.x = (int) x;
+			t.y = (int) y;
+		}
+	}
+
 	public void generate() {
 
 	}
@@ -61,7 +73,10 @@ public class Level implements Serializable {
 
 	public void next() {
 		Generator g = new Generator();
+		g.difficulty += Main.level.level * 0.2;
 		Main.level = g.generate();
+		player.velx = 0;
+		player.vely = 0;
 	}
 
 }

@@ -1,9 +1,15 @@
 import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.RadialGradientPaint;
+import java.awt.Toolkit;
+import java.awt.MultipleGradientPaint.CycleMethod;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
 public class Screen extends Canvas {
 
@@ -19,8 +25,12 @@ public class Screen extends Canvas {
 	}
 
 	public void drawAll(Level l) {
-		double px = Math.floor(Level.player.x);
-		double py = Math.floor(Level.player.y);
+		double px = Math.floor(l.player.x);
+		double py = Math.floor(l.player.y);
+
+		BufferedImage cursorImg = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
+		Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(cursorImg, new Point(0, 0), "blank cursor");
+		setCursor(blankCursor);
 
 		BufferStrategy bs = getBufferStrategy();
 		if (bs == null) {
@@ -48,12 +58,24 @@ public class Screen extends Canvas {
 	private void drawUI(Graphics2D g, Level l) {
 		double i = getWidth() / 80.0;
 		g.drawImage(Health.texture, (int) i, (int) i, (int) (i * 3), (int) (i * 3), null);
-		g.setFont(new Font(null, Font.ITALIC, (int) (i * 3)));
+		g.setFont(new Font(null, Font.BOLD, (int) (i * 3)));
 		g.setColor(Color.WHITE);
-		g.drawString("x" + Level.player.health, (int) i * 6, (int) (i * 3.5));
+		g.drawString("x" + l.player.health, (int) i * 6, (int) (i * 3.5));
+		g.setColor(Color.WHITE);
+		g.drawString("Level " + l.level, (int) (getWidth() / 2 - 5 * i), (int) (i * 3.5));
 		g.drawImage(Energy.texture, (int) (getWidth() - i - (12 * i)), (int) (i * 0.8), (int) (4 * i), (int) (4 * i),
 				null);
-		g.drawString("x" + Level.player.energy, (int) (getWidth() - i - (6 * i)), (int) (i * 3.5));
+		g.drawString("x" + l.player.energy, (int) (getWidth() - i - (6 * i)), (int) (i * 3.5));
+
+		if (l.player.hit > 0) {
+			float[] fractions = { 0.2f, 0.8f };
+			Color[] c = { new Color(0, 0, 0, 0), new Color(255, 0, 0, (int) (255 * l.player.hit)) };
+			RadialGradientPaint gp = new RadialGradientPaint(new Point(getWidth() / 2, getHeight() / 2),
+					(float) (getWidth() * 0.6), new Point(getWidth() / 2, getHeight() / 2), fractions, c, CycleMethod.NO_CYCLE);
+
+			g.setPaint(gp);
+			g.fillRect(0, 0, getWidth(), getHeight());
+		}
 
 	}
 
