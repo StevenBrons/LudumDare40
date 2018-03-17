@@ -27,6 +27,9 @@ public class Main {
 					case "menu":
 						f.menu.run();
 						break;
+					case "info":
+						f.info.run();
+						break;
 					}
 
 					try {

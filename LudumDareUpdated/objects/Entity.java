@@ -22,7 +22,7 @@ public class Entity {
 
 		this.x += this.velx;
 		this.y += this.vely;
-
+		
 		checkHitbox(l);
 
 		this.velx *= drag;
@@ -57,7 +57,6 @@ public class Entity {
 			this.y = (xm.y + 1) * Tile.SIZE - hb;
 			this.vely = 0;
 		}
-
 	}
 
 	public void death(Level l) {

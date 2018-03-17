@@ -18,8 +18,8 @@ public class Generator {
 	double difficulty = 1;
 
 	public Generator() {
-		width = rnd.nextInt(8) + 2;
-		height = rnd.nextInt(8) + 2;
+		width = (int) (rnd.nextInt((int) (3 + difficulty)) + difficulty + 1);
+		height = (int) (rnd.nextInt((int) (3 + difficulty)) + difficulty + 1);
 		roomReader();
 	}
 
@@ -38,7 +38,7 @@ public class Generator {
 		}
 
 		int set = 0;
-		int enemies = (int) Math.ceil(width * height * difficulty);
+		int enemies = (int) ((int) Math.ceil(width * height) * (difficulty - Math.random() * 0.9));
 		while (set < enemies) {
 			int x = rnd.nextInt(width * rs);
 			int y = rnd.nextInt(height * rs);

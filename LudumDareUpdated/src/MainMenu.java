@@ -35,13 +35,13 @@ public class MainMenu extends JPanel {
 		start.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				start.setText("Resume");
 				Main.f.change("game");
 			}
 		});
 		info.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				Main.f.change("info");
 			}
 		});
 		exit.addActionListener(new ActionListener() {

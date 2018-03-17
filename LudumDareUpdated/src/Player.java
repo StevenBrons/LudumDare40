@@ -80,7 +80,7 @@ public class Player extends Entity implements Serializable {
 				WEST = true;
 				break;
 			case KeyEvent.VK_ESCAPE:
-				Main.f.change("menu");
+				Main.f.change("pause");
 				break;
 			case KeyEvent.VK_F5:
 				Main.level.next();
@@ -154,8 +154,18 @@ public class Player extends Entity implements Serializable {
 		if (health == 0) {
 			health = 3;
 			energy = 10;
-			Main.level.level = 1;
+			Main.f.change("died");
 			Main.level.next();
+			Main.level.level = 1;
+			
+			UP = false;
+			DOWN = false;
+			LEFT = false;
+			RIGHT = false;
+			NORTH = false;
+			EAST = false;
+			SOUTH = false;
+			WEST = false;
 		}
 	}
 

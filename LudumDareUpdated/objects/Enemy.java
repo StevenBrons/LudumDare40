@@ -35,8 +35,8 @@ public class Enemy extends Entity {
 		}
 
 		if (dist < range) {
-			this.velx = Math.cos(angle) * 3;
-			this.vely = Math.sin(angle) * 3;
+			this.velx = Math.cos(angle) * (3 + Main.level.level * 0.01);
+			this.vely = Math.sin(angle) * (3 + Main.level.level * 0.01);
 		} else {
 			if (dist < loadRange) {
 				if (Math.random() > 0.95) {

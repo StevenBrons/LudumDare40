@@ -26,6 +26,7 @@ public class Frame extends JFrame {
 	CardLayout cards = new CardLayout();
 	JPanel main = new JPanel();
 	MainMenu menu = new MainMenu();
+	Info info = new Info();
 	String showing;
 
 	public Frame() {
@@ -43,15 +44,44 @@ public class Frame extends JFrame {
 		main.setLayout(cards);
 		main.add(screen, "game");
 		main.add(menu, "menu");
+		main.add(info, "info");
 		change("menu");
 	}
 
 	public void change(String str) {
 		showing = str;
-		cards.show(main, str);
 		if (str.equals("game")) {
-			screen.requestFocus();
 		}
+		switch (str) {
+		case "game":
+			cards.show(main, str);
+			screen.requestFocus();
+			break;
+		case "info":
+			cards.show(main, "info");
+			info.requestFocus();
+			break;
+		case "menu":
+			cards.show(main, "menu");
+			menu.requestFocus();
+			menu.start.setText("Play");
+			break;
+		case "pause":
+			menu.title.setText("Ludum Dare #40");
+			menu.subtitle.setText("2D pixel shooter by Steven");
+			cards.show(main, "menu");
+			menu.start.setText("Resume");
+			menu.requestFocus();
+			break;
+		case "died":
+			menu.start.setText("Play Again");
+			cards.show(main, "menu");
+			menu.title.setText("You DIED");
+			menu.subtitle.setText("You reached level " + Main.level.level);
+			menu.requestFocus();
+			break;
+		}
+
 	}
 
 }

@@ -14,6 +14,38 @@ public class Bullet extends Entity {
 		this.vely = vely;
 	}
 
+	public void checkHitbox(Level l) {
+
+		int hb = getHitbox();
+
+		Tile xm = l.getTileAt(x - hb, y);
+		Tile xp = l.getTileAt(x + hb, y);
+		Tile ym = l.getTileAt(x, y - hb);
+		Tile yp = l.getTileAt(x, y + hb);
+
+		if (xm.isSolid()) {
+			this.x = (xm.x + 1) * Tile.SIZE + hb;
+			this.velx = 0;
+			this.vely = 0;
+		}
+		if (xp.isSolid()) {
+			this.x = (xm.x) * Tile.SIZE + hb;
+			this.velx = 0;
+			this.vely = 0;
+		}
+		if (ym.isSolid()) {
+			this.y = (xm.y) * Tile.SIZE + hb;
+			this.vely = 0;
+			this.velx = 0;
+		}
+		if (yp.isSolid()) {
+			this.y = (xm.y + 1) * Tile.SIZE - hb;
+			this.vely = 0;
+			this.velx = 0;
+		}
+	}
+
+	
 	public BufferedImage getTexture() {
 		return texture;
 	}

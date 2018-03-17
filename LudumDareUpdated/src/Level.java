@@ -74,7 +74,9 @@ public class Level implements Serializable {
 	public void next() {
 		Generator g = new Generator();
 		g.difficulty += Main.level.level * 0.2;
+		int l = Main.level.level;
 		Main.level = g.generate();
+		Main.level.level = l + 1;
 		player.velx = 0;
 		player.vely = 0;
 	}
