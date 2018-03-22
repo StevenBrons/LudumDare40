@@ -87,9 +87,9 @@ public class MainMenu extends JPanel {
 	}
 
 	public void run() {
-		Color c1 = Color.getHSBColor((float) ((i % 9000) / 9000.0), 1f, 1f);
-		Color c1b = Color.getHSBColor((float) ((i % 9000) / 9000.0), 0.9f, 0.7f);
-		Color c2 = Color.getHSBColor((float) ((i % 9000 + 3000) / 9000.0), 1f, 1f);
+		Color c1 = Color.getHSBColor((float) ((i % 9000) / 9000.0), 0.7f, 0.9f);
+		Color c1b = Color.getHSBColor((float) ((i % 9000) / 9000.0), 0.7f, 0.7f);
+		Color c2 = Color.getHSBColor((float) ((i % 9000 + 3000) / 9000.0), 0.7f, 0.7f);
 
 		setBackground(c1);
 

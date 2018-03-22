@@ -94,7 +94,8 @@ public class Screen extends Canvas {
 			for (int y = -20; y < h; y += 1) {
 				Tile t = l.getTileAt(x * Tile.SIZE, y * Tile.SIZE);
 				if (t.isSolid()) {
-					g.setColor(Color.getHSBColor((float) ((l.color % 10000) / 10000.0), 1f, 1f));
+					Color c1 = Color.getHSBColor((float) ((l.color % 10000) / 10000.0),0.7f,0.7f);
+					g.setColor(c1);
 					g.fillRect(x * Tile.SIZE, y * Tile.SIZE, Tile.SIZE, Tile.SIZE);
 				}
 			}

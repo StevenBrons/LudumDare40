@@ -53,11 +53,10 @@ public class Info extends JPanel {
 	}
 
 	public void run() {
-		Color c1 = Color.getHSBColor((float) ((i % 9000) / 9000.0), 1f, 1f);
-		Color c2 = Color.getHSBColor((float) ((i % 9000 + 3000) / 9000.0), 1f, 1f);
-		Color c3 = Color.getHSBColor((float) ((i % 9000 + 6000) / 9000.0), 0.9f, 0.7f);
-
-		ta.setBackground(c1);
+		Color c1 = Color.getHSBColor((float) ((i % 9000) / 9000.0), 0.7f, 0.9f);
+		Color c2 = Color.getHSBColor((float) ((i % 9000 + 6000) / 9000.0), 0.7f, 0.7f);
+		Color c3 = Color.getHSBColor((float) ((i % 9000 + 3000) / 9000.0), 0.7f, 0.7f);		ta.setBackground(c1);
+		
 		ta.setForeground(c2);
 
 		setBackground(c1);
